@@ -1,0 +1,139 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Admin</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html{
+            height: 100%;
+        }
+        body{
+            height: 100%;
+        }
+        form {
+            height: 100%;
+        }
+        header{
+            background-color:#157575;
+        }
+        
+        #banner{
+            padding: 10px 0;
+            /* box-shadow: 0 1px 35px rgba(0,0,0,0.3); */
+        }
+
+        #welcome{
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            font-size: 15px;
+            
+        }
+        #logoutbutton{
+            border: none;
+            padding: 10px 30px;
+            border-radius: 25px;
+            background-color:#ead7c7;
+            color: #333;
+            cursor: pointer;
+            font-size: 15px;
+            transition: 0.5s;
+            position: relative;
+        }
+        #logoutbutton:hover{
+            background-color: black;
+            color: white;
+            transition: 0.5s;
+        }
+
+         main{
+            height: 100%;
+            display: flex;
+        }
+        #menu{
+            width: 16%;
+            height: 100%;
+                
+            background-color:#ead7c7;
+        }
+        .menuitem{
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            border: none;
+            
+            border-color: #999;
+            cursor: pointer;
+            background: transparent;
+            font-size: 13px;
+            transition: 0.5s;
+            box-shadow: inset 0 -2px 5px rgba(128,128,128,0.6); 
+            position: relative;
+        }
+            .menuitem:hover {
+                background-color : #dcbca3;
+            transition: 0.2s;
+            }
+
+        
+         #mainsection{
+            width: 84%;
+            height: 100%;
+            padding:20px;
+            overflow: hidden;
+            overflow-y: scroll;
+            background-color:#faf2ed;
+        }
+
+
+    </style>
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server" id="form1">
+        <header id="banner">
+            <img src="../images/Banklogo.png" alt="sorry" id="logo"><br />
+        <div id="welcome">
+            <h1>welcome <asp:Label ID="adminname" runat="server" Text="Label"></asp:Label>!</h1>
+            <asp:Button ID="logoutbutton" runat="server" Text="Logout" CausesValidation="false" OnClick="logout_Click"/>
+        </div>
+        </header>
+        <main>
+            <section id="menu">
+                
+               <asp:Button ID="homebutton" CssClass="menuitem" runat="server" CausesValidation="False" Text="Home" OnClick="homebutton_Click"></asp:Button>
+            <br/>
+                <asp:Button ID="addcustomer" runat="server" CssClass="menuitem" CausesValidation="False" OnClick="addcustomer_Click" Text="Add Customer"></asp:Button>
+                
+            <br/>
+                <asp:Button ID="showcustomers" runat="server" CssClass="menuitem" CausesValidation="False" OnClick="showcustomers_Click" Text="My customers"></asp:Button>
+               
+            <br/>
+                <asp:Button ID="depositmoney" runat="server" CssClass="menuitem" CausesValidation="False" OnClick="depositmoney_Click" Text="Deposit Money"></asp:Button>
+               
+            <br/>
+                <asp:Button ID="withdrawmoney" runat="server" CssClass="menuitem" CausesValidation="False" OnClick="withdrawmoney_Click" Text="Withdraw Money"></asp:Button>
+               
+            <br/>
+                <asp:Button ID="transfermoney" runat="server" CssClass="menuitem" CausesValidation="False" OnClick="transfermoney_Click" Text="Transfer Money"></asp:Button>
+              
+            
+        </section>
+        <section id="mainsection">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+            </section>
+        </main>
+        </form>
+</body>
+</html>
